@@ -1,45 +1,120 @@
+-- ==========================================
+-- 1. 基本設定 (エディタの挙動・日本語化)
+-- ==========================================
+vim.opt.helplang = "ja"
+vim.env.LANG = "ja_JP.UTF-8"
+vim.cmd('language ja_JP.UTF-8')
 
+vim.g.mapleader = " "         -- Leaderキーをスペースに
+vim.opt.number = true         -- 行番号表示
+vim.opt.cursorline = true     -- カーソル行を強調
+vim.opt.scrolloff = 8         -- スクロール時の余白
+vim.opt.termguicolors = true  -- 真色対応
+vim.opt.fileencoding = "utf-8"
+vim.scriptencoding = "utf-8"
+
+-- ==========================================
+-- 2. lazy.nvim の本体インストール
+-- ==========================================
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath})
 end
 vim.opt.rtp:prepend(lazypath)
 
--- 先にエディタの基本設定を済ませる（エラー回避のため）
-vim.g.mapleader = " "
-vim.opt.cursorline = true
-vim.opt.scrolloff = 8
-vim.opt.termguicolors = true
--- エンコーディング系はエラーが出やすいので、必要なものだけに絞る
-vim.scriptencoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
-
--- プラグイン設定
+-- ==========================================
+-- 3. プラグインのインストール設定
+-- ==========================================
 require("lazy").setup({
+  { import = "plugins" }, -- これが魔法の一行です
+
   "mattn/emmet-vim",
   "folke/tokyonight.nvim",
   "nvim-treesitter/nvim-treesitter",
   "windwp/nvim-autopairs",
   "windwp/nvim-ts-autotag",
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-  { "nvim-tree/nvim-tree.lua", dependencies = "nvim-tree/nvim-web-devicons" }
+  { "nvim-tree/nvim-tree.lua", dependencies = "nvim-tree/nvim-web-devicons" },
+
+  -- LSP関連
+  "neovim/nvim-lspconfig",
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
 })
 
--- プラグイン読み込み後の設定
-vim.cmd("colorscheme tokyonight")
-require("nvim-autopairs").setup {}
-require("nvim-ts-autotag").setup {}
+-- ==========================================
+-- 4. 各プラグインの詳細設定
+-- ==========================================
 
+-- --- カラースキーム ---
+vim.cmd("colorscheme tokyonight")
+
+-- --- nvim-autopairs ---
+require("nvim-autopairs").setup {}
+
+-- --- Telescope (ファイル検索) ---
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 
--- nvim-treeの設定
-local status, nvimtree = pcall(require, "nvim-tree")
-if status then
-  nvimtree.setup({
-    view = { width = 30, side = "left" },
-    filters = { dotfiles = false }
-  })
-  vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', { silent = true })
-end
+-- --- nvim-tree (ファイルツリー) ---
+-- 3つあった setup を1つに統合しました
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    width = 30,
+    side = "left",
+  },
+  renderer = {
+    group_empty = true,
+    icons = {
+      glyphs = {
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
+    },
+  },
+  filters = {
+    dotfiles = false,
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    show_on_dirs = true,
+    timeout = 400,
+  },
+})
+-- キーバインド設定
+vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
 
+-- --- LSP / Mason 設定 ---
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "html" }
+})
+
+-- v0.11以降のLSP設定
+vim.lsp.config('html', {
+    capabilities = require('cmp_nvim_lsp').default_capabilities()
+})
+
+-- --- nvim-cmp (補完) ---
+local cmp = require('cmp')
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim-lsp' },
+  })
+})
