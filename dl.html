@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テスト対策スケジュール ダウンロード</title>
+<style>
+  body { font-family: sans-serif; background: #f0f4ff; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+  .card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 400px; width: 90%; text-align: center; }
+  h1 { font-size: 1.3rem; color: #333; margin-bottom: 8px; }
+  p { color: #666; font-size: 0.9rem; margin-bottom: 24px; }
+  .btn { background: #0078d4; color: white; border: none; border-radius: 10px; padding: 14px 28px; font-size: 1rem; cursor: pointer; width: 100%; font-weight: bold; }
+  .btn:hover { background: #005fa3; }
+  .info { margin-top: 20px; font-size: 0.8rem; color: #999; }
+  .badge { display: inline-block; background: #e8f0fe; color: #0078d4; border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge">📅 Outlookカレンダー用</div>
+  <h1>1学期中間テスト対策<br>スケジュール</h1>
+  <p>5/8〜5/13の30イベントが入っています。<br>ダウンロード後、Outlookにインポートしてください。</p>
+  <button class="btn" onclick="download()">⬇️ .icsファイルをダウンロード</button>
+  <div class="info">Outlook・iCal・Googleカレンダーで使えます</div>
+</div>
+<script>
+function download() {
+  const ics = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Study Schedule//JA
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:study-001@schedule
+DTSTART;TZID=Asia/Tokyo:20260508T170000
+DTEND;TZID=Asia/Tokyo:20260508T181000
+SUMMARY:📘 英語① 過去形の復習
+DESCRIPTION:Unit 0 / was・were の使い分け、went・practiced など一般動詞過去形の定着
+END:VEVENT
+BEGIN:VEVENT
+UID:study-002@schedule
+DTSTART;TZID=Asia/Tokyo:20260508T182000
+DTEND;TZID=Asia/Tokyo:20260508T193000
+SUMMARY:📘 英語② be going to
+DESCRIPTION:Unit 1-1 / am/is/are + going to + 動詞原形の語順・否定文・疑問文
+END:VEVENT
+BEGIN:VEVENT
+UID:study-003@schedule
+DTSTART;TZID=Asia/Tokyo:20260508T194000
+DTEND;TZID=Asia/Tokyo:20260508T205000
+SUMMARY:📙 数学① データ活用基礎
+DESCRIPTION:相対度数・累積度数の算出・ヒストグラム・度数分布多角形の読み取り
+END:VEVENT
+BEGIN:VEVENT
+UID:study-004@schedule
+DTSTART;TZID=Asia/Tokyo:20260509T170000
+DTEND;TZID=Asia/Tokyo:20260509T181000
+SUMMARY:📙 数学② 代表値・範囲
+DESCRIPTION:平均値・中央値・最頻値の定義と算出・範囲（最大値－最小値）
+END:VEVENT
+BEGIN:VEVENT
+UID:study-005@schedule
+DTSTART;TZID=Asia/Tokyo:20260509T182000
+DTEND;TZID=Asia/Tokyo:20260509T193000
+SUMMARY:🔴 理科① 基礎固め（元素記号・化学式）
+DESCRIPTION:H・O・C・Fe・Cuなど元素記号、H2O・CO2・NaHCO3など化学式を白紙で書けるまで
+END:VEVENT
+BEGIN:VEVENT
+UID:study-006@schedule
+DTSTART;TZID=Asia/Tokyo:20260509T194000
+DTEND;TZID=Asia/Tokyo:20260509T205000
+SUMMARY:📗 国語① 文法・前半（自立語の分類）
+DESCRIPTION:動詞・形容詞・形容動詞の終止形での見分け方
+END:VEVENT
+BEGIN:VEVENT
+UID:study-007@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T090000
+DTEND;TZID=Asia/Tokyo:20260510T100000
+SUMMARY:📗 国語② 文法・後半（自動詞・他動詞）
+DESCRIPTION:自動詞と他動詞の判別練習
+END:VEVENT
+BEGIN:VEVENT
+UID:study-008@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T101000
+DTEND;TZID=Asia/Tokyo:20260510T111000
+SUMMARY:🟠 社会① 世界の姿・前半（緯度経度・日本の領土）
+DESCRIPTION:本初子午線・日付変更線・時差計算・択捉島・南鳥島・領海・EEZ
+END:VEVENT
+BEGIN:VEVENT
+UID:study-009@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T112000
+DTEND;TZID=Asia/Tokyo:20260510T122000
+SUMMARY:🟠 社会② 世界の姿・後半（気候帯5種）
+DESCRIPTION:熱帯〜寒帯5つの気候帯の分布・各地域の生活文化・住居の特徴
+END:VEVENT
+BEGIN:VEVENT
+UID:study-010@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T130000
+DTEND;TZID=Asia/Tokyo:20260510T140000
+SUMMARY:🔴 理科② 炭酸水素ナトリウムの熱分解
+DESCRIPTION:実験手順・CO2・水・炭酸ナトリウムの確認方法セット・2NaHCO3→Na2CO3+H2O+CO2
+END:VEVENT
+BEGIN:VEVENT
+UID:study-011@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T141000
+DTEND;TZID=Asia/Tokyo:20260510T151000
+SUMMARY:🔴 理科③ 硫化（物質が結びつく変化）
+DESCRIPTION:鉄＋硫黄（混合物）vs 硫化鉄（化合物）の性質の違い・Fe+S→FeS / Cu+S→CuS
+END:VEVENT
+BEGIN:VEVENT
+UID:study-012@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T152000
+DTEND;TZID=Asia/Tokyo:20260510T162000
+SUMMARY:📘 英語③ will（意志・予測）
+DESCRIPTION:Unit 1-2 / will + 動詞原形・won'tに注意・be going toとの違い
+END:VEVENT
+BEGIN:VEVENT
+UID:study-013@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T163000
+DTEND;TZID=Asia/Tokyo:20260510T173000
+SUMMARY:📘 英語④ 第4文型SVOO
+DESCRIPTION:Unit 1-3 / 動詞＋人＋もの の語順・teach・tell・make など頻出動詞
+END:VEVENT
+BEGIN:VEVENT
+UID:study-014@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T174000
+DTEND;TZID=Asia/Tokyo:20260510T184000
+SUMMARY:📙 数学③ 多項式の加法・減法
+DESCRIPTION:同類項をまとめる基礎計算・縦書き計算・かっこの符号ミス防止
+END:VEVENT
+BEGIN:VEVENT
+UID:study-015@schedule
+DTSTART;TZID=Asia/Tokyo:20260510T185000
+DTEND;TZID=Asia/Tokyo:20260510T195000
+SUMMARY:🟠 社会③ 世界の諸地域・前半
+DESCRIPTION:アジア・欧州・アフリカ（中国経済・二期作・EU・アフリカの資源と経済格差）
+END:VEVENT
+BEGIN:VEVENT
+UID:study-016@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T090000
+DTEND;TZID=Asia/Tokyo:20260511T100000
+SUMMARY:🟠 社会④ 世界の諸地域・後半
+DESCRIPTION:南北米・オセアニア（適地適作・シリコンバレー・バイオエタノール・多文化主義）
+END:VEVENT
+BEGIN:VEVENT
+UID:study-017@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T101000
+DTEND;TZID=Asia/Tokyo:20260511T111000
+SUMMARY:📙 数学④ 複雑な多項式（分数・分配法則）
+DESCRIPTION:通分して分子をまとめる計算・かっこ内への係数掛け（分配法則）
+END:VEVENT
+BEGIN:VEVENT
+UID:study-018@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T112000
+DTEND;TZID=Asia/Tokyo:20260511T122000
+SUMMARY:📙 数学⑤ 単項式の乗法・除法
+DESCRIPTION:係数×係数・文字×文字で計算・累乗（(-3x)²など）の符号と範囲の確認
+END:VEVENT
+BEGIN:VEVENT
+UID:study-019@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T130000
+DTEND;TZID=Asia/Tokyo:20260511T140000
+SUMMARY:🔴 理科④ 酸化と還元
+DESCRIPTION:酸化・還元の定義・銅の酸化・Mgの燃焼・酸化銅の炭素による還元
+END:VEVENT
+BEGIN:VEVENT
+UID:study-020@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T141000
+DTEND;TZID=Asia/Tokyo:20260511T151000
+SUMMARY:📘 英語⑤ 第5文型SVOC（call A B）
+DESCRIPTION:Unit 1-4 / call＋A（対象）＋B（呼び名）の語順・What do you call A? も確認
+END:VEVENT
+BEGIN:VEVENT
+UID:study-021@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T152000
+DTEND;TZID=Asia/Tokyo:20260511T162000
+SUMMARY:📗 国語③ 古典基礎・前半（枕草子の基本情報・仮名遣い）
+DESCRIPTION:作者：清少納言・平安時代・歴史的仮名遣いの変換ルール（は→わ、ひ→い など）
+END:VEVENT
+BEGIN:VEVENT
+UID:study-022@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T163000
+DTEND;TZID=Asia/Tokyo:20260511T173000
+SUMMARY:📗 国語④ 古典基礎・後半（重要語句の現代語訳）
+DESCRIPTION:をかし（趣がある）・いと（たいそう）・さらなり（言うまでもない）などの暗記
+END:VEVENT
+BEGIN:VEVENT
+UID:study-023@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T174000
+DTEND;TZID=Asia/Tokyo:20260511T184000
+SUMMARY:📗 国語⑤ 枕草子の内容理解
+DESCRIPTION:四季の情景（春はあけぼの・夏は夜）・うつくし＝かわいい・具体例（雀の子・児の顔）
+END:VEVENT
+BEGIN:VEVENT
+UID:study-024@schedule
+DTSTART;TZID=Asia/Tokyo:20260511T185000
+DTEND;TZID=Asia/Tokyo:20260511T195000
+SUMMARY:🟠 社会⑤ 安土桃山時代
+DESCRIPTION:織田信長（楽市楽座）・豊臣秀吉（太閤検地・刀狩・朝鮮出兵）・桃山文化（狩野永徳・千利休）
+END:VEVENT
+BEGIN:VEVENT
+UID:study-025@schedule
+DTSTART;TZID=Asia/Tokyo:20260512T170000
+DTEND;TZID=Asia/Tokyo:20260512T181000
+SUMMARY:🔴 理科⑤ 化学反応式の総復習
+DESCRIPTION:全反応式を白紙に書き出すセルフテスト・質量保存の法則
+END:VEVENT
+BEGIN:VEVENT
+UID:study-026@schedule
+DTSTART;TZID=Asia/Tokyo:20260512T182000
+DTEND;TZID=Asia/Tokyo:20260512T193000
+SUMMARY:📘 英語⑥★ 長文読解＋総仕上げ【圧縮】
+DESCRIPTION:Singaporeの本文復習・重要単語・プリント解き直し・動詞の原形・スペル確認
+END:VEVENT
+BEGIN:VEVENT
+UID:study-027@schedule
+DTSTART;TZID=Asia/Tokyo:20260512T194000
+DTEND;TZID=Asia/Tokyo:20260512T205000
+SUMMARY:📙 数学⑥★ 分数乗除＋式の値＋総仕上げ【圧縮】
+DESCRIPTION:逆数計算・一つの分数にまとめて約分・式の値（簡単な形に整理してから代入）・解き直し
+END:VEVENT
+BEGIN:VEVENT
+UID:study-028@schedule
+DTSTART;TZID=Asia/Tokyo:20260513T170000
+DTEND;TZID=Asia/Tokyo:20260513T181000
+SUMMARY:🔴 理科⑥★ 実験注意点＋最終チェック【圧縮】
+DESCRIPTION:試験管の口を下げる理由・先にガラス管を抜く理由・重要用語の最終確認・不安な反応式の解き直し
+END:VEVENT
+BEGIN:VEVENT
+UID:study-029@schedule
+DTSTART;TZID=Asia/Tokyo:20260513T182000
+DTEND;TZID=Asia/Tokyo:20260513T193000
+SUMMARY:📗 国語⑥★ 現代文読解＋総復習【圧縮】
+DESCRIPTION:「僕」の心情変化分析・重要表現の再確認・全範囲の重要語句と活用形の最終確認
+END:VEVENT
+BEGIN:VEVENT
+UID:study-030@schedule
+DTSTART;TZID=Asia/Tokyo:20260513T194000
+DTEND;TZID=Asia/Tokyo:20260513T205000
+SUMMARY:🟠 社会⑥★ 地図チェック＋用語セルフテスト【圧縮】
+DESCRIPTION:歴史地図確認・世界の主要山脈・河川の最終特定・EEZ・アパルトヘイト・南蛮貿易など不安な用語の解き直し
+END:VEVENT
+END:VCALENDAR`;
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'study_schedule.ics';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
